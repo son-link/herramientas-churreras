@@ -47,3 +47,11 @@ unzip bas2tap26-generic.zip
 gcc -Wall -O2 bas2tap.c -o bas2tap -lm ; strip bas2tap
 echo -e "\e[1m\e[32mInstalando bas2tap\e[0m"
 sudo cp bas2tap /usr/bin
+
+echo -e "\e[1m\e[32mCompilando SevenuP\e[0m"
+wget -nc http://metalbrain.speccy.org/SevenuP-v1.21src_WIP.zip
+unzip SevenuP-v1.21src_WIP.zip
+cd SRC
+make -f makefile.unx CC=g++
+echo -e "\e[1m\e[32mInstalando SevenuP\e[0m"
+sudo cp SevenuP /usr/bin

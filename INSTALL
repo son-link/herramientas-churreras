@@ -1,1 +1,5 @@
-Para compilar las herramientas necesitas tener instalado el compilador gcc y ejecutar el script churrera installer
+Para compilar las herramientas necesitas tener instalado el compilador lo siguiente y ejecutar el script churrera-installer.sh
+NOTA: en algunas distribuciones las librerías requeridas pueden sufrir cambios en el nombre, además de que pueden acabar en -dev o -devel
+
+gcc y g++ 4.0  o superior
+wx-widgetx 2.6 o superior (para SevenuP)
