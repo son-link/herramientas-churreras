@@ -2,3 +2,8 @@ r1 (0.1):
 	* Primera versión del instalador
 r2:
 	* Añadido el programa SevenuP
+
+r3 (0.2):
+	* Añadido el programa Mappy, versión modifica para la Churrera
+	* Añadidos las utilidades mapcnv, mapcnvbin, msc, reordenator y sprcnv de los Mojons Twins
+	* Añadido el script churrera_installer.sh para crear o actualizar un proyecto de la Churrera.

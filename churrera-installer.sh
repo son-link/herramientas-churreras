@@ -25,7 +25,7 @@ tar xzf z88dk-splib2-1.10.1.tar.gz
 cd z88dk-splib2-1.10.1
 make
 echo -e "\e[1m\e[32mInstalando z88dk\e[0m"
-sudo make prefix=/usr DESTDIR=/usr install
+sudo make prefix=/usr install
 
 echo -e "\e[1mAñada las siguientes lineas en el fichero .bashrc de su carpeta HOME, /etc/profile o cree un fichero ejecutable en /etc/profile.d/:\e[0m"
 echo "export ZCCCFG=/usr/share/z88dk/lib/config/"
@@ -55,3 +55,25 @@ cd SRC
 make -f makefile.unx CC=g++
 echo -e "\e[1m\e[32mInstalando SevenuP\e[0m"
 sudo cp SevenuP /usr/bin
+
+echo -e "\e[1m\e[32mInstalando las utilidades mojonas\e[0m"
+wget -nc https://dl.dropboxusercontent.com/u/58286032/programas/utilidades-mojonas-linux.tar.gz
+tar xvfz utilidades-mojonas-linux.tar.gz
+sudo mkdir -p /opt/churrera/bin
+sudo cp utilidades-mojonas/* /opt/churrera/bin
+echo "Añada la ruta /opt/churrera/bin al PATH"
+read -n 1 -s
+
+echo -e "\e[1m\e[32mInstalando Mappy\e[0m"
+wget -nc http://www.mojontwins.com/churrera/mt-mappy.zip
+unzip mt-mappy.zip
+sudo cp -r Mappy /opt/churrera
+sudo echo "#!bin/bash" > sudo /usr/bin/mappy
+sudo echo "cd /opt/churrera/Mappy && wine mapwin.exe" >> sudo /usr/bin/mappy
+sudo chmod +x /usr/bin/mappy
+
+echo "Instalación terminada."
+echo "Gracias por usarlo y esperamos que disfrutes haciendo tus juegos."
+echo "Pulse una tecla para terminar."
+read -n 1 -s
+rm -rf /tmp/churrera
