@@ -11,3 +11,4 @@ r3 (0.2):
 r4 (0.3):
 	* Ahora se muestra un menú para escoger los elementos a instalar
 	* Ahora cada instalador esta en un función aparte para una mayor claridad del código
+	* También comprueba si esta instalado lo necesario para instalar las aplicaciones
