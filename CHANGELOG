@@ -7,3 +7,7 @@ r3 (0.2):
 	* Añadido el programa Mappy, versión modifica para la Churrera
 	* Añadidos las utilidades mapcnv, mapcnvbin, msc, reordenator y sprcnv de los Mojons Twins
 	* Añadido el script churrera_installer.sh para crear o actualizar un proyecto de la Churrera.
+
+r4 (0.3):
+	* Ahora se muestra un menú para escoger los elementos a instalar
+	* Ahora cada instalador esta en un función aparte para una mayor claridad del código
