@@ -14,7 +14,7 @@ USED=()
 
 function z88dk {
 	echo -e "\e[1m\e[32mCompilando z88dk\e[0m"
-	wget -nc https://dl.dropboxusercontent.com/u/58286032/aur/z88dk-splib2-1.10.1.tar.gz
+	wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/z88dk-splib2-1.10.1.tar.gz
 	tar xzf z88dk-splib2-1.10.1.tar.gz
 	cd z88dk-splib2-1.10.1
 	make
@@ -58,7 +58,7 @@ function sevenup {
 
 function mojonas {
 	echo -e "\e[1m\e[32mInstalando las utilidades mojonas\e[0m"
-	wget -nc https://dl.dropboxusercontent.com/u/58286032/programas/utilidades-mojonas-linux.tar.gz
+	wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/utilidades-mojonas-linux.tar.gz
 	tar xvfz utilidades-mojonas-linux.tar.gz
 	sudo mkdir -p /opt/churrera/bin
 	sudo cp utilidades-mojonas/* /opt/churrera/bin
