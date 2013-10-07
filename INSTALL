@@ -3,4 +3,4 @@ NOTA: en algunas distribuciones las librerías requeridas pueden sufrir cambios 
 
 gcc y g++ 4.0  o superior
 wx-widgetx 2.6 o superior (para SevenuP)
-Wine (para Mappy de momento)
+Wine (para Mappy, Beepola y BeepFX)

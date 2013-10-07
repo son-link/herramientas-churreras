@@ -71,10 +71,30 @@ function map {
 	wget -nc http://www.mojontwins.com/churrera/mt-mappy.zip
 	unzip mt-mappy.zip
 	sudo cp -r Mappy /opt/churrera
-	sudo echo "#!bin/bash" > sudo /usr/bin/mappy
-	sudo echo "cd /opt/churrera/Mappy && wine mapwin.exe" >> sudo /usr/bin/mappy
+	echo "#!/bin/bash" | sudo tee /usr/bin/mappy
+	echo "cd /opt/churrera/Mappy && wine mapwin.exe" | sudo tee -a /usr/bin/mappy
 	sudo chmod +x /usr/bin/mappy
 }
+
+function Beepola {
+	wget -nc http://freestuff.grok.co.uk/beepola/Beepola_v1.06.01.zip
+	unzip Beepola_v1.06.01.zip
+	sudo mkdir -p /opt/churrera/beepola
+	sudo cp Beepola.exe /opt/churrera/beepola
+	echo "#!/bin/bash" | sudo tee /usr/bin/beepola
+	echo "wine /opt/churrera/beepola/Beepola.exe" | sudo tee -a /usr/bin/beepola
+	sudo chmod +x /usr/bin/beepola
+}
+
+function BeepFX {
+	wget -nc http://shiru.untergrund.net/files/beepfx.zip
+	unzip -p beepfx.zip beepfx/BeepFX.exe > BeepFX.exe
+	sudo mkdir -p /opt/churrera/beepfx && sudo cp BeepFX.exe /opt/churrera/beepfx
+	echo "#!/bin/bash" | sudo tee /usr/bin/beepfx
+	echo "wine /opt/churrera/beepfx/BeepFX" | sudo tee -a /usr/bin/beepfx
+	sudo chmod +x /usr/bin/beepfx
+}
+
 #Comprobamos si esta instalado lo necesario
 for comm in  "${COMMANDS[@]}"; do
 	command -v $comm >/dev/null 2>&1 || { echo >&2 "No se encuentra ${comm}."; ERRORS=$[$ERRORS+1];}
@@ -85,7 +105,7 @@ if [ $ERRORS -gt 0 ]; then
 	echo -e "\e[1m\e[31mUno o mas programas requeridos para la instalación no están instalados.\e[0m\nPor favor, instálelos y vuelva a intentar"; exit 1
 fi
 
-echo -e "\e[1m\e[32mChurrera installer 0.1\e[0m"
+echo -e "\e[1m\e[32mChurrera installer 0.4\e[0m"
 echo -e "Bienvenid@ al instalador de las utilidades para la \e[1mChurrera\e[0m de los Mojon Twins."
 echo "A lo largo del proceso se instalaran los componentes necesarios para el uso."
 echo -e "Por favor, lea el \e[31mINSTALL\e[0m para conocer los programas y librerías necesarias para la compilación y uso de los componentes."
@@ -94,6 +114,7 @@ echo -e "Seleccione los componentes a instalar escribiendo el numero separado po
 echo -e "\e[1m1: z88dk		2: bin2tap"
 echo -e "3: bas2tap		4: SevenuP"
 echo -e "5: Utilidades mojonas	6: Mappy"
+echo -e "7: Beepola		8: BeepFX"
 echo -e "0: todo"
 read -a OPTIONS -p 'Escriba su selección: ' -t 120
 echo -e "\e[0m"
@@ -106,6 +127,18 @@ if [ ! -d /tmp/churrera ]; then
 	mkdir -p /tmp/churrera
 fi
 cd /tmp/churrera
+
+if [[ " ${OPTIONS[*]} " == *" 0 "* ]]; then
+	z88dk
+	bin2
+	bas2
+	sevenup
+	mojonas
+	map
+	Beepola
+	BeepFX
+	exit
+fi
 
 for opt in  "${OPTIONS[@]}"; do
 	if [[ " ${used[*]} " == *" $opt "* ]]; then
@@ -136,20 +169,17 @@ for opt in  "${OPTIONS[@]}"; do
 			map
 			USED+=(6)
 			;;
-
-		0)
-			z88dk
-			bin2
-			bas2
-			sevenup
-			mojonas
-			map
-			exit
+		7)
+			Beepola
+			USED+=(7)
+			;;
+		8)
+			BeepFX
 			;;
 	esac
 done
 
-echo "Instalación terminada."
+echo -e "\e[1m\e[32mInstalación terminada.\e[0m"
 echo "Gracias por usarlo y esperamos que disfrutes haciendo tus juegos."
 echo "Pulse una tecla para terminar."
 read -n 1 -s

@@ -20,7 +20,7 @@ function ayuda {
 
 function new_proyect {
 	cd /tmp
-	wget -nc https://dl.dropboxusercontent.com/u/58286032/programas/Churrera3.99.1.tar.gz
+	wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/Churrera3.99.1.tar.gz
 	if [ ! -d $2 ]; then
 		mkdir -p $2
 	fi
@@ -42,7 +42,7 @@ function update_proyect {
 		PROYECTDIR="$1"
 		echo -e "\e[32mActualizando el proyecto. Espere un momento ...\e[0m"
 		cd /tmp
-		wget -nc https://dl.dropboxusercontent.com/u/58286032/programas/Churrera3.99.1.tar.gz
+		wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/Churrera3.99.1.tar.gz
 		tar xzfv Churrera3.99.1.tar.gz
 		cd Churrera3.99.1
 		NAME=$(grep "NAME=" ${PROYECTDIR}/dev/make.sh | sed s/NAME=//)
