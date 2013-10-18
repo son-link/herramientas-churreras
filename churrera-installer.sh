@@ -77,6 +77,7 @@ function map {
 }
 
 function Beepola {
+	echo -e "\e[1m\e[32mInstalando Beepola\e[0m"
 	wget -nc http://freestuff.grok.co.uk/beepola/Beepola_v1.06.01.zip
 	unzip Beepola_v1.06.01.zip
 	sudo mkdir -p /opt/churrera/beepola
@@ -87,6 +88,7 @@ function Beepola {
 }
 
 function BeepFX {
+	echo -e "\e[1m\e[32mInstalando BeepFX\e[0m"
 	wget -nc http://shiru.untergrund.net/files/beepfx.zip
 	unzip -p beepfx.zip beepfx/BeepFX.exe > BeepFX.exe
 	sudo mkdir -p /opt/churrera/beepfx && sudo cp BeepFX.exe /opt/churrera/beepfx
@@ -95,6 +97,34 @@ function BeepFX {
 	sudo chmod +x /usr/bin/beepfx
 }
 
+function fuseutils {
+	search_lib=$(whereis -b libspectrum.h | cut -c8-)
+	echo $search_lib
+	if [ -z  "$search_lib" ]; then
+		echo -e "\e[1m\e[32mCompilando libspectrum\e[0m"
+		wget -nc http://sourceforge.net/projects/fuse-emulator/files/libspectrum/1.1.1/libspectrum-1.1.1.tar.gz
+		tar xvfz libspectrum-1.1.1.tar.gz
+		cd libspectrum-1.1.1
+		./configure --prefix=/usr
+		make
+		echo -e "\e[1m\e[32mInstalando libspectrum\e[0m"
+		sudo make install
+	fi
+	echo -e "\e[1m\e[32mCompilando fuse utils\e[0m"
+	wget -nc http://sourceforge.net/projects/fuse-emulator/files/fuse-utils/1.1.1/fuse-utils-1.1.1.tar.gz
+	tar xzfv fuse-utils-1.1.1.tar.gz
+	cd fuse-utils-1.1.1
+	ff=$( ffmpeg -version | grep "ffmpeg version" | cut -d " " -f 3 | sed  "s/\.//g")
+	if [ $ff -gt 200 ]; then
+		wget -nc https://raw.github.com/pld-linux/fuse-utils/master/ffmpeg_enum_codecid.patch
+		patch -p1 < ffmpeg_enum_codecid.patch
+	fi
+
+	./configure --prefix=/usr
+	make
+	echo -e "\e[1m\e[32mInstalando fuse utils\e[0m"
+	sudo make install
+}
 #Comprobamos si esta instalado lo necesario
 for comm in  "${COMMANDS[@]}"; do
 	command -v $comm >/dev/null 2>&1 || { echo >&2 "No se encuentra ${comm}."; ERRORS=$[$ERRORS+1];}
@@ -109,12 +139,14 @@ echo -e "\e[1m\e[32mChurrera installer 0.4\e[0m"
 echo -e "Bienvenid@ al instalador de las utilidades para la \e[1mChurrera\e[0m de los Mojon Twins."
 echo "A lo largo del proceso se instalaran los componentes necesarios para el uso."
 echo -e "Por favor, lea el \e[31mINSTALL\e[0m para conocer los programas y librerías necesarias para la compilación y uso de los componentes."
+echo -e "\e[31mAlgunos componentes pueden estar disponibles desde los repositorios de su distribución. Si es así se recomienda instalarlos a excepción de z88dk ya que es necesario compilarlo con una librería extra."
 echo -e "\e[1m\e[31mALERTA: no ejecute este script con permisos de root por motivos de seguridad.\e[0m"
 echo -e "Seleccione los componentes a instalar escribiendo el numero separado por espacios:\nEjemplo: 1 4\n"
 echo -e "\e[1m1: z88dk		2: bin2tap"
 echo -e "3: bas2tap		4: SevenuP"
 echo -e "5: Utilidades mojonas	6: Mappy"
 echo -e "7: Beepola		8: BeepFX"
+echo -e "9: Fuse Emu Utils"
 echo -e "0: todo"
 read -a OPTIONS -p 'Escriba su selección: ' -t 120
 echo -e "\e[0m"
@@ -137,6 +169,7 @@ if [[ " ${OPTIONS[*]} " == *" 0 "* ]]; then
 	map
 	Beepola
 	BeepFX
+	fuseutils
 	exit
 fi
 
@@ -175,6 +208,9 @@ for opt in  "${OPTIONS[@]}"; do
 			;;
 		8)
 			BeepFX
+			;;
+		9)
+			fuseutils
 			;;
 	esac
 done

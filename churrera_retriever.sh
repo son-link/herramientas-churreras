@@ -20,12 +20,12 @@ function ayuda {
 
 function new_proyect {
 	cd /tmp
-	wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/Churrera3.99.1.tar.gz
+	wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/Churrera3.99.2.tar.gz
 	if [ ! -d $2 ]; then
 		mkdir -p $2
 	fi
-	tar xzfv Churrera3.99.1.tar.gz
-	cp Churrera3.99.1/* -r $2
+	tar xzfv Churrera3.99.2.tar.gz
+	cp Churrera3.99.2/* -r $2
 	cd $2/dev
 	mv churromain.c $1.c
 	sed -i s/NAME=/NAME=${1}/ make.sh

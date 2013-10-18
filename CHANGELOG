@@ -17,3 +17,10 @@ r5 (0.4):
 	* Añadidos Beepola y BeepFX
 	* Corregidas las urls en churrera_retriever por cambio de carpeta donde se encuentra el paquete con la Churrera
 	* Ahora si se escoge la opción 0 y una o mas opciones se ejecuta la instalación de todo y se cierra sin ejecutar las demás opciones
+
+r6: (0.5):
+	* El proyecto pasa a llamarse ahora Herramientas Churreras
+	* Añadido instalador para las utilidades del emulador FUSE
+	* Ahora make.sh te dice cuanto espacio en memoria te queda (se necesita tener instalado fuse emu utils)
+	* La Churrera Retriever ahora actualiza o descarga la Churrera 3.99.2
+	* Otros cambios menores
