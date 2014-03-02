@@ -89,9 +89,8 @@ function Beepola {
 
 function BeepFX {
 	echo -e "\e[1m\e[32mInstalando BeepFX\e[0m"
-	wget -nc http://shiru.untergrund.net/files/beepfx.zip
-	unzip -p beepfx.zip beepfx/BeepFX.exe > BeepFX.exe
-	sudo mkdir -p /opt/churrera/beepfx && sudo cp BeepFX.exe /opt/churrera/beepfx
+	wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/beepfx.zip
+	sudo mkdir -p /opt/churrera/beepfx && sudo unzip beepfx.zip -d /opt/churrera/
 	echo "#!/bin/bash" | sudo tee /usr/bin/beepfx
 	echo "wine /opt/churrera/beepfx/BeepFX" | sudo tee -a /usr/bin/beepfx
 	sudo chmod +x /usr/bin/beepfx
