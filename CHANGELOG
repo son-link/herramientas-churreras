@@ -24,3 +24,7 @@ r6: (0.5):
 	* Ahora make.sh te dice cuanto espacio en memoria te queda (se necesita tener instalado fuse emu utils)
 	* La Churrera Retriever ahora actualiza o descarga la Churrera 3.99.2
 	* Otros cambios menores
+
+r7: (0.6):
+	* Actualizados los enlaces a los archivos debido a los cambios hechos por Dropbox.
+	* Actualizada la fecha del Copyright.

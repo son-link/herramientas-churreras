@@ -1,13 +1,13 @@
 #!/bin/bash
 # Churrera
-# (c) 2013 Alfonso Saavedra "Son Link"
+# (c) 2013 - 2017 Alfonso Saavedra "Son Link"
 # Script para automatizar la creación de un nuevo proyecto para la churrera o actualizar uno existente.
 OIFS="$IFS"
 IFS=$'\n'
 
 function ayuda {
 	echo "Churrera Retriever"
-	echo '(c) 2013 Alfonso Saavedra "Son Link"'
+	echo '(c) 2013 - 2017 Alfonso Saavedra "Son Link"'
 	echo ' '
 	echo "Crea un nuevo proyecto para la Churrera o actualiza uno a la nueva versión"
 	echo " "
@@ -20,7 +20,7 @@ function ayuda {
 
 function new_proyect {
 	cd /tmp
-	wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/Churrera3.99.2.tar.gz
+	wget -nc https://www.dropbox.com/s/ygi088fenkvynq2/Churrera3.99.2.tar.gz
 	if [ ! -d $2 ]; then
 		mkdir -p $2
 	fi
@@ -42,8 +42,8 @@ function update_proyect {
 		PROYECTDIR="$1"
 		echo -e "\e[32mActualizando el proyecto. Espere un momento ...\e[0m"
 		cd /tmp
-		wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/Churrera3.99.1.tar.gz
-		tar xzfv Churrera3.99.1.tar.gz
+		wget -nc https://www.dropbox.com/s/ygi088fenkvynq2/Churrera3.99.2.tar.gz
+		tar xzfv Churrera3.99.2.tar.gz
 		cd Churrera3.99.1
 		NAME=$(grep "NAME=" ${PROYECTDIR}/dev/make.sh | sed s/NAME=//)
 		mv dev/churromain.c dev/$NAME.c
@@ -57,7 +57,7 @@ function update_proyect {
 		mv dev/config.h.bak confih.h
 		mv ${PROYECTDIR} ${PROYECTDIR}-viejo
 		cd /tmp
-		mv Churrera3.99.1 $1
+		mv Churrera3.99.2 $1
 		echo -e "\e[32mActualización terminada.\e[0m"
 		echo "Edite el archivo dev/config.h segun lo tiene en ${PROYECTDIR}-viejo/dev/config.h"
 		echo "Una vez editado y comprobado que esta todo correcto puede borrar ${PROYECTDIR}-viejo si lo desea."

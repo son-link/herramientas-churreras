@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Churrera installer 0.1
-# (c) 2013 Alfonso Saavedra "Son Link"
+# (c) 2013 - 2017 Alfonso Saavedra "Son Link"
 # Churrera (c) 2013 The Mojon twins
 # Script bash para instalar los componentes de la Churrera para crear juegos para las Zx Spectrum
 # Script bajo licencia GPLv3
@@ -14,7 +14,7 @@ USED=()
 
 function z88dk {
 	echo -e "\e[1m\e[32mCompilando z88dk\e[0m"
-	wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/z88dk-splib2-1.10.1.tar.gz
+	wget -nc https://www.dropbox.com/s/koyxyued91m4okh/z88dk-splib2-1.10.1.tar.gz
 	tar xzf z88dk-splib2-1.10.1.tar.gz
 	cd z88dk-splib2-1.10.1
 	make
@@ -58,7 +58,7 @@ function sevenup {
 
 function mojonas {
 	echo -e "\e[1m\e[32mInstalando las utilidades mojonas\e[0m"
-	wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/utilidades-mojonas-linux.tar.gz
+	wget -nc https://www.dropbox.com/s/n3wglv8sw5jdpen/utilidades-mojonas-linux.tar.gz
 	tar xvfz utilidades-mojonas-linux.tar.gz
 	sudo mkdir -p /opt/churrera/bin
 	sudo cp utilidades-mojonas/* /opt/churrera/bin
@@ -89,7 +89,7 @@ function Beepola {
 
 function BeepFX {
 	echo -e "\e[1m\e[32mInstalando BeepFX\e[0m"
-	wget -nc https://dl.dropboxusercontent.com/u/58286032/churrera/beepfx.zip
+	wget -nc https://www.dropbox.com/s/l2rjjxqwz9d89ag/beepfx.zip
 	sudo mkdir -p /opt/churrera/beepfx && sudo unzip beepfx.zip -d /opt/churrera/
 	echo "#!/bin/bash" | sudo tee /usr/bin/beepfx
 	echo "wine /opt/churrera/beepfx/BeepFX" | sudo tee -a /usr/bin/beepfx

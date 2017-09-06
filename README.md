@@ -1,18 +1,18 @@
 Herramientas Churreras
 ======================
 
-###(c) 2013 Alfonso Saavedra "Son Link"
-#####Churrera (c) 2013 [The Mojon twins](http://www.mojontwins.com/)
+### (c) 2013 - 2017 Alfonso Saavedra "Son Link"
+##### Churrera (c) 2013 [The Mojon twins](http://www.mojontwins.com/)
 
 Scripts bajo licencia GPLv3. Ver COPYING para mas información.
 
-#####Churrera Installer
+##### Churrera Installer
 Instalador para las herramientas necesarias para la Churrera de los Mojon Twins.
 
-#####Churrera Retriever
+##### Churrera Retriever
 Crea o actualiza un proyecto de la churrera
 
-#####make.sh
+##### make.sh
 Script para compilar el juego.
 
 La Churrera te permita hacer de manera mas fácil juegos para los micro ordenadores Zx Spectrum, sin necesidad de saber BASIC o código maquina.

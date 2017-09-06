@@ -21,7 +21,7 @@ cat loader.tap screen.tap main.tap > $NAME.tap
 
 echo -e "\e[32mCompilación terminada.\e[0m"
 
-# Si tienes instalado las herramientas del emulador fuse, descomenta las siguientes lineas para
+# Si tienes instalado las herramientas del emulador fuse, descomenta las siguientes lineas (quitar las #) para
 # saber de cuanto espacio libre dispones.
 #echo -e "\e[32mCalculando espacio disponible\e[0m"
 #TAMANO=`tzxlist main.tap | grep "Data length" | tail -1 | grep -o '[0-9]*'`
